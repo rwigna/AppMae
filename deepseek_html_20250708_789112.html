@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mães que Acolhem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-primario: #5D9CEC;
+            --amarelo: #FFD700;
+            --verde: #48CFAD;
+            --roxo: #AC92EC;
+            --fundo-claro: #F5F9FF;
+            --texto-escuro: #333;
+            --sombra: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: var(--fundo-claro);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--azul-primario) 0%, var(--verde) 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            background: white;
+            color: var(--azul-primario);
+            padding: 10px;
+            border-radius: 50%;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 30px;
+        }
+        
+        nav a:hover, nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            position: relative;
+            color: white;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(93, 156, 236, 0.8);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            margin: 10px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--sombra);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .btn-azul {
+            background-color: var(--azul-primario);
+            color: white;
+        }
+        
+        .btn-amarelo {
+            background-color: var(--amarelo);
+            color: #333;
+        }
+        
+        .btn-verde {
+            background-color: var(--verde);
+            color: white;
+        }
+        
+        /* Cards de funcionalidades */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--azul-primario);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--amarelo);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: var(--azul-primario);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .card-header i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .card-body {
+            padding: 30px;
+        }
+        
+        .card-body h3 {
+            color: var(--azul-primario);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: var(--fundo-claro);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-categoria {
+            margin-bottom: 40px;
+        }
+        
+        .faq-categoria h2 {
+            color: var(--azul-primario);
+            border-bottom: 2px solid var(--verde);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .faq-item {
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .faq-pergunta {
+            background: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .faq-pergunta i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-pergunta.ativa i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-resposta {
+            background: white;
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-resposta.ativa {
+            padding: 20px 25px;
+            max-height: 1000px;
+            border-top: 1px solid #eee;
+        }
+        
+        .leis-importantes {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: var(--sombra);
+        }
+        
+        .leis-importantes h3 {
+            color: var(--azul-primario);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .lei-item {
+            background: var(--fundo-claro);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .lei-item h4 {
+            color: var(--roxo);
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: var(--amarelo);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: var(--amarelo);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--azul-primario);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container logo-container">
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+                <h1>Mães que Acolhem</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Início</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#faq">FAQ Jurídico</a></li>
+                    <li><a href="#cadastro">Cadastro</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Nenhuma mãe fica sozinha</h2>
+            <p>Conectamos mães que precisam de apoio com mulheres que desejam ajudar, gerando empatia, emprego e união feminina.</p>
+            <div class="hero-buttons">
+                <a href="#cadastro" class="btn btn-amarelo">Preciso de Apoio</a>
+                <a href="#cadastro" class="btn btn-azul">Quero Ajudar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionalidades -->
+    <section class="features" id="como-funciona">
+        <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="card-header">
+                        <i class="fas fa-user-plus"></i>
+                        <h3>Cadastro Seguro</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Registre-se como mãe ou cuidadora de forma simples e protegida, com total conformidade à LGPD.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-header">
+                        <i class="fas fa-search"></i>
+                        <h3>Encontre Conexões</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Conecte-se com profissionais qualificadas próximas a você ou mães que precisam de apoio.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-header">
+                        <i class="fas fa-comments"></i>
+                        <h3>Comunicação Direta</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Utilize nosso chat integrado para combinar todos os detalhes do apoio com segurança.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-header">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Informação Jurídica</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Acesse guias completos sobre direitos das crianças atípicas e responsabilidades contratuais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Jurídico -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">FAQ Jurídico</h2>
+            <div class="faq-container">
+                <div class="faq-categoria">
+                    <h2>Direitos das Crianças Atípicas</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-pergunta">
+                            Quais os direitos de uma criança com autismo no Brasil?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-resposta">
+                            <p>As crianças com autismo têm direito a:</p>
+                            <ul>
+                                <li>Educação inclusiva em escolas regulares</li>
+                                <li>Atendimento prioritário em serviços públicos e privados</li>
+                                <li>Tratamento multidisciplinar pelo SUS</li>
+                                <li>Benefício de Prestação Continuada (BPC) para famílias de baixa renda</li>
+                                <li>Isenção de impostos na compra de veículos (em alguns casos)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-pergunta">
+                            Como garantir matrícula em escola regular?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-resposta">
+                            <p>A Lei Brasileira de Inclusão (LBI) garante o direito à educação inclusiva:</p>
+                            <ol>
+                                <li>Procure a secretaria de educação do seu município</li>
+                                <li>Apresente laudo médico com o diagnóstico</li>
+                                <li>Exija o Plano Educacional Individualizado (PEI)</li>
+                                <li>Se houver recusa, procure o Ministério Público</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-categoria">
+                    <h2>Responsabilidades Contratuais</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-pergunta">
+                            Como formalizar o contrato com uma cuidadora?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-resposta">
+                            <p>Recomendamos:</p>
+                            <ul>
+                                <li>Registrar a cuidadora como MEI (Microempreendedor Individual)</li>
+                                <li>Assinar contrato de prestação de serviços</li>
+                                <li>Especificar horários, atividades e remuneração</li>
+                                <li>Definir período de experiência (até 90 dias)</li>
+                                <li>Incluir cláusula de confidencialidade</li>
+                            </ul>
+                            <p><a href="#" class="btn btn-azul" style="margin-top: 15px;">Baixar Modelo de Contrato</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-pergunta">
+                            Quais os direitos trabalhistas das cuidadoras?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-resposta">
+                            <p>Como prestadoras de serviço (MEI), as cuidadoras têm direito a:</p>
+                            <ul>
+                                <li>Remuneração acordada em contrato</li>
+                                <li>Pagamento em dia</li>
+                                <li>Respeito ao horário estabelecido</li>
+                                <li>Ambiente de trabalho seguro</li>
+                            </ul>
+                            <p>Elas não têm direito a férias, 13º ou FGTS, pois são profissionais autônomas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="leis-importantes">
+                    <h3>Leis Importantes</h3>
+                    
+                    <div class="lei-item">
+                        <h4>Lei Berenice Piana (Lei 12.764/2012)</h4>
+                        <p>Institui a Política Nacional de Proteção dos Direitos da Pessoa com Transtorno do Espectro Autista.</p>
+                    </div>
+                    
+                    <div class="lei-item">
+                        <h4>Lei Brasileira de Inclusão (Lei 13.146/2015)</h4>
+                        <p>Estatuto da Pessoa com Deficiência, que inclui pessoas com autismo.</p>
+                    </div>
+                    
+                    <div class="lei-item">
+                        <h4>Lei do MEI (Lei Complementar 128/2008)</h4>
+                        <p>Regulamenta o trabalho de microempreendedores individuais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Mães que Acolhem</h3>
+                    <p>Conectando mães e cuidadoras com empatia, gerando emprego e fortalecendo a união feminina.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#como-funciona">Como Funciona</a></li>
+                        <li><a href="#faq">FAQ Jurídico</a></li>
+                        <li><a href="#cadastro">Cadastro</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">LGPD</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@maesqueacolhem.com.br</li>
+                        <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+                        <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP - Brasil</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Mães que Acolhem. Todos os direitos reservados. Conforme Lei Geral de Proteção de Dados (LGPD)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ interativo
+        document.querySelectorAll('.faq-pergunta').forEach(pergunta => {
+            pergunta.addEventListener('click', function() {
+                this.classList.toggle('ativa');
+                const resposta = this.nextElementSibling;
+                resposta.classList.toggle('ativa');
+            });
+        });
+
+        // Navegação suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
